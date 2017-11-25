@@ -48,6 +48,7 @@ Andres Sanaguano
 
 using namespace std;
 
+// Prototipos de las funciones.
 void gotoxy(int ,int );
 void t(int );
 void generarCodigo(datos **); 
