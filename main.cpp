@@ -211,6 +211,221 @@ void printgenerarCodigo(datos **e){
       printf("\n");
    }
 }
+void menu()
+{
+	
+do{
+
+   for(i=0;i<130;i++)
+   {
+        for(j=0;j<40;j++)
+        {
+           t(120);gotoxy(0+i,2+j);printf("%c",219);
+        }
+
+   }
+
+
+
+    for(i=0;i<100;i++)
+   {
+        for(j=0;j<10;j++)
+        {
+           t(241);gotoxy(0+i,1+j);printf("%c",219);
+        }
+
+   }
+
+//linea verde
+   for(i=0;i<60;i++)
+   {
+        for(j=0;j<2;j++)
+        {
+           t(250);gotoxy(70+i,10+j);printf("%c",219);
+        }
+
+   }
+
+    for(i=0;i<40;i++)
+   {
+        for(j=0;j<20;j++)
+        {
+           t(0);gotoxy(70+i,15+j);printf("%c",219);
+        }
+
+   }
+
+ for(j=0;j<41;j++)
+        {
+           t(0);gotoxy(0,1+j);printf("%c",219);
+        }
+t(30);
+gotoxy(3,2);printf("   ______   _                   ____    ____   ______       _       ");
+gotoxy(3,3);printf(" .' ___  | (_)                 |_   *  /   _|.' ___  |     / *      ");
+gotoxy(3,4);printf("/ .'   *_| __   _ .--.  .---.    |   */   | / .'   *_|    / _ *     ");
+gotoxy(3,5);printf("| |       [  | [ `.-. |/ /__**   | |*  /| | | |          / ___ *    ");
+gotoxy(3,6);printf("* `.___.'* | |  | | | || *__.,  _| |_*/_| |_* `.___.'* _/ /   * *_  ");
+gotoxy(3,7);printf(" `.____ .'[___][___||__]'.__.' |_____||_____|`.____ .'|____| |____| ");
+
+
+
+       do{
+
+        co=241;
+        gotoxy(cox,coy);t(co);printf("                                      ");
+      gotoxy(cox,coy+1);t(co);printf("    Cartelera                         ");
+      gotoxy(cox,coy+2);t(co);printf("                                      ");
+
+
+
+      gotoxy(cox,coy+4);t(co);printf("                                      ");
+      gotoxy(cox,coy+5);t(co);printf("    Compra de Boletos                 ");
+      gotoxy(cox,coy+6);t(co);printf("                                      ");
+
+
+
+
+      gotoxy(cox,coy+8);t(co);printf("                                      ");
+      gotoxy(cox,coy+9);t(co);printf("    Facturacion                       ");
+     gotoxy(cox,coy+10);t(co);printf("                                      ");
+
+      gotoxy(cox,coy+12);t(co);printf("                                      ");
+      gotoxy(cox,coy+13);t(co);printf("    Informacion                       ");
+      gotoxy(cox,coy+14);t(co);printf("                                      ");
+
+      gotoxy(cox,coy+16);t(co);printf("                                      ");
+      gotoxy(cox,coy+17);t(co);printf("    Salir                             ");
+      gotoxy(cox,coy+18);t(co);printf("                                      ");
+
+//t(240);gotoxy(5,17);printf("                                        ");
+co=10;
+  switch(op)
+  {
+
+case 1 : t(co);
+      gotoxy(cox,coy);t(co);printf("                                      ");
+      gotoxy(cox,coy+1);t(co);printf("    Cartelera                         ");
+      gotoxy(cox,coy+2);t(co);printf("                                      ");
+
+      t(10);
+gotoxy(imx,imy+1);printf(" .----------------. ");
+gotoxy(imx,imy+2);printf("| .--------------. |");
+gotoxy(imx,imy+3);printf("| |  __________  | |");
+gotoxy(imx,imy+4);printf("| | |>>>>>>>>>>| | |");
+gotoxy(imx,imy+5);printf("| | |----------| | |");
+gotoxy(imx,imy+6);printf("| | |          | | |");
+gotoxy(imx,imy+7);printf("| | |          | | |");
+gotoxy(imx,imy+8);printf("| | |__________| | |");
+gotoxy(imx,imy+9);printf("| |              | |");
+gotoxy(imx,imy+10);printf("| '--------------' |");
+gotoxy(imx,imy+11);printf(" '----------------' ");
+      break;
+
+      case 2 : t(co);
+       gotoxy(cox,coy+4);t(co);printf("                                      ");
+      gotoxy(cox,coy+5);t(co);printf("    Compra de Boletos                 ");
+      gotoxy(cox,coy+6);t(co);printf("                                      ");
+        t(10);
+gotoxy(imx,imy+1);printf(" .----------------. ");
+gotoxy(imx,imy+2);printf("| .--------------. |");
+gotoxy(imx,imy+3);printf("| |    __||___   | |");
+gotoxy(imx,imy+4);printf("| |   /  ___  |  | |");
+gotoxy(imx,imy+5);printf("| |  |  (__ *_|  | |");
+gotoxy(imx,imy+6);printf("| |   '.___`-.   | |");
+gotoxy(imx,imy+7);printf("| |  |`*____) |  | |");
+gotoxy(imx,imy+8);printf("| |  |_______.'  | |");
+gotoxy(imx,imy+9);printf("| |       ||     | |");
+gotoxy(imx,imy+10);printf("| '--------------' |");
+gotoxy(imx,imy+11);printf(" '----------------' ");
+break;
+case 3: t(co);
+      gotoxy(cox,coy+8);t(co);printf("                                      ");
+      gotoxy(cox,coy+9);t(co);printf("    Facturacion                       ");
+     gotoxy(cox,coy+10);t(co);printf("                                      ");
+
+gotoxy(imx,imy+1);printf(" .----------------. ");
+gotoxy(imx,imy+2);printf("| .--------------. |");
+gotoxy(imx,imy+3);printf("| |  _________   | |");
+gotoxy(imx,imy+4);printf("| | |_   ___  |  | |");
+gotoxy(imx,imy+5);printf("| |   | |_  *_|  | |");
+gotoxy(imx,imy+6);printf("| |   |  _|      | |");
+gotoxy(imx,imy+7);printf("| |  _| |_       | |");
+gotoxy(imx,imy+8);printf("| | |_____|      | |");
+gotoxy(imx,imy+9);printf("| |              | |");
+gotoxy(imx,imy+10);printf("| '--------------' |");
+gotoxy(imx,imy+11);printf(" '----------------' ");
+break;
+case 4 : t(co);
+      gotoxy(cox,coy+12);t(co);printf("                                      ");
+      gotoxy(cox,coy+13);t(co);printf("    Informacion                       ");
+      gotoxy(cox,coy+14);t(co);printf("                                      ");
+
+gotoxy(imx,imy+1);printf(" .----------------. ");
+gotoxy(imx,imy+2);printf("| .--------------. |");
+gotoxy(imx,imy+3);printf("| |     _____    | |");
+gotoxy(imx,imy+4);printf("| |    |_   _|   | |");
+gotoxy(imx,imy+5);printf("| |      | |     | |");
+gotoxy(imx,imy+6);printf("| |      | |     | |");
+gotoxy(imx,imy+7);printf("| |     _| |_    | |");
+gotoxy(imx,imy+8);printf("| |    |_____|   | |");
+gotoxy(imx,imy+9);printf("| |              | |");
+gotoxy(imx,imy+10);printf("| '--------------' |");
+gotoxy(imx,imy+11);printf(" '----------------' ");
+break;
+case 5 : t(co);
+      gotoxy(cox,coy+16);t(co);printf("                                      ");
+      gotoxy(cox,coy+17);t(12);printf("    Salir                             ");
+      gotoxy(cox,coy+18);t(co);printf("                                      ");
+t(10);
+gotoxy(imx,imy+1);printf(" .----------------. ");
+gotoxy(imx,imy+2);printf("| .--------------. |");
+gotoxy(imx,imy+3);printf("| |  ____  ____  | |");
+gotoxy(imx,imy+4);printf("| | |_  _||_  _| | |");
+gotoxy(imx,imy+5);printf("| |   \ \  / /   | |");
+gotoxy(imx,imy+6);printf("| |    > `' <    | |");
+gotoxy(imx,imy+7);printf("| |  _/ /'`\ \_  | |");
+gotoxy(imx,imy+8);printf("| | |____||____| | |");
+gotoxy(imx,imy+9);printf("| |              | |");
+gotoxy(imx,imy+10);printf("| '--------------' |");
+gotoxy(imx,imy+11);printf(" '----------------' ");
+break;
+
+  }
+
+
+
+   do{
+      tecla=getch();
+      }while(tecla!=72 && tecla!=80 && tecla!=80 && tecla!=13 );
+//tecla 13 enter
+
+      if(tecla==72)
+      {
+
+       if(op>0)
+       {
+       op--;
+       }
+       }
+       if(tecla==80)
+      {
+
+       if(op<6)
+       {
+       op++;
+       }
+       }
+if(op==6)
+       {
+       op=1;
+       }
+       if(op==0)
+       {
+       op=5;
+       }
+       }while(tecla!=13);
+
+}
 
 // Funcion para imprimir en pantalla la cartelera.
 void cartelera(){
