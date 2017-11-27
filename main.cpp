@@ -48,6 +48,50 @@
 
 using namespace std;
 
+struct backup
+{
+    char ba[50];
+    char ba2[50];
+};
+struct boletos
+{
+    int adultos;
+    int ninios;
+    int TerEdad;
+    int fila[5];
+    int columna[5];
+    float total;
+};
+struct horarios
+{
+    int hora[2];
+    int minuto[2];
+};
+struct asientos
+{
+    char butaca[tamS][tamS];
+    //int tipoSala;
+
+};
+struct peliculas
+{
+    int peli[5];
+    horarios h1[2];
+    char Nsala[2];
+};
+struct datos
+{
+    char nombre[20];
+    char apellido[20];
+    char cedula[11];
+    char codigo[20][30];
+      int tipoSala;
+    boletos b1;
+    peliculas p1;
+    datos *sig;
+    datos *ant;
+}*lista;
+
 // Prototipos de las funciones.
 void gotoxy(int ,int );
 void t(int );
@@ -378,6 +422,51 @@ int validarcedula(long ci){
       return 0;
    }
 }
+
+
+ void Lista() //Funcion para insertar un primer elemento en la lista
+ {
+
+     datos * p= new datos;
+     fflush(stdin);
+     printf("Ingrese el nombre\n");
+     gets(p->nombre);
+
+     printf("Ingrese el apellido\n");
+     gets(p->apellido);
+
+      printf("Ingrese el numero de cedula\n");
+     gets(p->cedula);
+     fflush(stdin);
+
+     lista = p;
+    lista->ant=NULL;
+    lista->sig=NULL;
+
+
+ }
+
+void imprimirDatos(datos *c) //Funcion para imprimir la lista
+{
+    datos *k;
+    k=c;
+    do{
+        printf("\t\tDATOS DE FACTURACION\n");
+        printf("Nombre: ");
+        puts(k->nombre);
+        printf("Apellido: ");
+        puts(k->apellido);
+        printf("Cedula: ");
+        puts(k->cedula);
+        printf("%d\n",k->b1.adultos);
+         printf("%d\n",k->b1.ninios);
+         printf("%d\n",k->b1.TerEdad);
+         printf("%.2f\n",k->b1.total);
+        k=k->sig;
+
+    }while(k!=NULL);
+}
+
 
 int main()
 {
