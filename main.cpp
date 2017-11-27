@@ -54,6 +54,9 @@ void t(int );
 void generarCodigo(datos **); 
 void printgenerarCodigo(datos **);
 void cartelera();
+static HWND  hConWnd;
+HWND BCX_Bitmap(char*, HWND, int, int, int, int, int, int, int, int);
+HWND GetConsoleWndHandle(void);
   
 
 // Funcion para mover el cursor de la ventana de texto.
@@ -247,6 +250,135 @@ void cartelera(){
       system("cls");
    }while(opc!=6);
 }
+
+// Funcion para imprimir en pantalla una imagen.
+HWND BCX_Bitmap(char* Text, HWND hWnd, int id, int X, int Y, int W, int H, int Res, int Style, int Exstyle)
+{
+	HWND A;
+	HBITMAP hBitmap;
+	// set default style
+	if (!Style) Style = WS_CLIPSIBLINGS | WS_CHILD | WS_VISIBLE | SS_BITMAP | WS_TABSTOP;
+	// form for the image
+	A = CreateWindowEx(Exstyle, "static", NULL, Style, X, Y, 0, 0, hWnd, (HMENU)id, GetModuleHandle(0), NULL);
+	// Text contains filename
+	hBitmap = (HBITMAP)LoadImage(0, Text, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	// auto-adjust width and height
+	if (W || H) hBitmap = (HBITMAP)CopyImage(hBitmap, IMAGE_BITMAP, W, H, LR_COPYRETURNORG);
+	SendMessage(A, (UINT)STM_SETIMAGE, (WPARAM)IMAGE_BITMAP, (LPARAM)hBitmap);
+	if (W || H) SetWindowPos(A, HWND_TOP, X, Y, W, H, SWP_DRAWFRAME);
+	return A;
+}
+
+HWND GetConsoleWndHandle(void)
+{
+	HWND hConWnd;
+	OSVERSIONINFO os;
+	char szTempTitle[64], szClassName[128], szOriginalTitle[1024];
+	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+	GetVersionEx(&os);
+	if (os.dwPlatformId == VER_PLATFORM_WIN32s) return 0;
+	GetConsoleTitle(szOriginalTitle, sizeof(szOriginalTitle));
+	sprintf(szTempTitle, "%u - %u", GetTickCount(), GetCurrentProcessId());
+	SetConsoleTitle(szTempTitle);
+	Sleep(60);
+	hConWnd = FindWindow(NULL, szTempTitle);
+	SetConsoleTitle(szOriginalTitle);
+	if (os.dwPlatformId == VER_PLATFORM_WIN32_WINDOWS)
+	{
+		hConWnd = GetWindow(hConWnd, GW_CHILD);
+		if (hConWnd == NULL) return 0;
+		GetClassName(hConWnd, szClassName, sizeof(szClassName));
+		while (strcmp(szClassName, "ttyGrab") != 0)
+		{
+			hConWnd = GetNextWindow(hConWnd, GW_HWNDNEXT);
+			if (hConWnd == NULL) return 0;
+			GetClassName(hConWnd, szClassName, sizeof(szClassName));
+		}
+	}
+	return hConWnd;
+}
+
+// Funcion para validar el ingreso de solo letras.
+void validar_letras (char *p){
+   int i;
+   char tecla;
+   i = 0;
+   p[0] = '\0';
+   do{
+      tecla = getch ();
+      if ( i > 0 && tecla == 8 ){
+         printf ( "\b \b" );
+         p[--i] = '\0';
+      }else{
+         if((tecla >= 65 && tecla <= 95) || (tecla >= 97 && tecla <= 122) || tecla == 32 ){
+            printf ( "%c", tecla );
+            p[i++] = tecla;
+         }
+      }
+   }while((tecla != 13 || p[0] == '\0') && i < TAM);
+   p[i] = '\0';
+   return ;
+}
+
+// Funcion para validar el ingreso de solo numeros.
+void validar_numeros(char *p){
+   char i;
+   int tecla;
+   i = 0;
+   p[0] = '\0';
+   do{
+      tecla = getch ();
+      if ( i > 0 && tecla == 8 ){
+         printf ( "\b \b" );
+         p[--i] = '\0';
+      }else{
+         if((tecla >= 48 && tecla <= 57) || tecla == 32){
+            printf ( "%c", tecla );
+            p[i++] = tecla;
+         }
+      }
+   }while((tecla != 13 || p[0] == '\0') && i < TAM);
+   p[i] = '\0';
+   return ;
+}
+
+// Funcion para validar el ingreso una cedula de ciudadania.
+int validarcedula(long ci){
+   long coc;
+   int res,sumpar,sumimpar,cont,dv,mul,st;
+   sumpar=sumimpar=0;
+   cont=1;
+   dv=ci%10;
+   ci=ci/10;
+   do{
+      coc=ci/10;
+      res=ci%10;
+      if(cont==1){
+         mul=res*2;
+         if(mul>9)
+         mul=mul-9;
+         sumimpar+=mul;
+         cont=2;
+      }else{
+         sumpar+=res;
+         cont=1;
+      }
+      ci=coc;
+   }while(coc!=0);
+   st=sumpar+sumimpar;
+   res=10-(st%10);
+   if(res==10)
+      res=0;
+   if(res==dv){
+      printf("\nSu digito verificador es : %d\n",dv);
+      t(14);printf("\nEl numero de cedula es valido \n");t(10);
+      return 1;
+   }else{
+      t(12);printf("\nEl numero de cedula ingresado es invalido");t(10);
+      return 0;
+   }
+}
+
 int main()
 {
    printf("Cine");
