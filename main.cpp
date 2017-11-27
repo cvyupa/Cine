@@ -3,9 +3,9 @@
    Proyecto Primer Parcial
    Cine
    Integrantes:
-Carlos Yupa
-Mauricio Ruiz
-Andres Sanaguano
+	-Carlos Yupa
+	-Mauricio Ruiz
+	-Andres Sanaguano
 */
 
 // Librerias.
