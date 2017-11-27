@@ -48,6 +48,7 @@
 
 using namespace std;
 
+//ESTRUCTURAS USADAS
 struct backup
 {
     char ba[50];
@@ -79,6 +80,8 @@ struct peliculas
     horarios h1[2];
     char Nsala[2];
 };
+
+//LISTA DOBLE QUE MANEJA TODAS LAS DEMAS ESTRUCTURAS
 struct datos
 {
     char nombre[20];
